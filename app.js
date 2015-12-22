@@ -28,7 +28,7 @@ app.use(session({
 }));
 
 app.get('/', function (req, res) {
-  let redirectURI = "http://localhost:3000/tasks";
+  let redirectURI = "http://demo.chronofeed.com:3000/tasks";
   let scope = "https://www.googleapis.com/auth/tasks";
   let uri = "https://accounts.google.com/o/oauth2/v2/auth?scope=" + encodeURIComponent(scope) + "&redirect_uri=" + encodeURIComponent(redirectURI) + "&response_type=code&client_id=" + process.env.G_CLIENT_ID;
   res.redirect(uri);
@@ -51,7 +51,7 @@ app.get("/tasks/", function (req, res, next) {
         code: req.session.code,
         client_id: process.env.G_CLIENT_ID,
         client_secret: process.env.G_CLIENT_SECRET,
-        redirect_uri: "http://localhost:3000/tasks",
+        redirect_uri: "http://demo.chronofeed.com:3000/tasks",
         grant_type: "authorization_code"
       }
     };
